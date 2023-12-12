@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.Nodo;
+import java.util.Comparator;
 
 public class Lista<T> {
 
@@ -37,10 +38,43 @@ public class Lista<T> {
     public void imprimirLista() {
         Nodo<T> actual = cabeza;
         while (actual != null) {
-            System.out.print(actual + " ");
+            System.out.print(actual + " \n");
             actual = actual.getSiguiente();
         }
         System.out.println();
+    }
+
+    public Nodo<T> getCabeza() {
+        return cabeza;
+    }
+
+    public Nodo<T> buscarEnLista(T datoBuscar, Comparator<T> comparador) { ///Nota: Se usa el :: para comparar los datos
+        Nodo<T> actual = cabeza;                                           ///EJ: (clienteBuscar, Comparator.comparing(Cliente::getCedula)
+
+        while (actual != null) {
+            if (comparador.compare(actual.getDato(), datoBuscar) == 0) {
+                //System.out.println("Elemento encontrado: " + actual);
+                return actual;
+            }
+            //System.out.println("Elemento no encontrado.");
+            actual = actual.getSiguiente();
+        }
+        return null;
+    }
+
+    public Nodo<T> obtenerNodoEnPosicion(int posicion) {
+        if (posicion < 0 || posicion >= size) {
+            throw new IllegalArgumentException("Posición inválida");
+        }
+        Nodo<T> actual = cabeza;
+        int contador = 0;
+
+        while (actual != null && contador < posicion) {
+            actual = actual.getSiguiente();
+            contador++;
+        }
+        System.out.println(actual);
+        return actual;
     }
 
     @Override

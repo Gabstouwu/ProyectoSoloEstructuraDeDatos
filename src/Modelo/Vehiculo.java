@@ -2,13 +2,12 @@ package Modelo;
 
 public class Vehiculo {
 
-    // Constantes de estado
+    //Se definen las constantes para evitar usar un valor tipo string o boolean
     public static final int DISPONIBLE = 1;
     public static final int RESERVADO = 2;
     public static final int VENDIDO = 3;
-   
-    // Atributos 
-    private static int idVehiculo;
+
+    private String placaVehiculo;
     private String color;
     private String year;
     private String cilindraje;
@@ -16,41 +15,17 @@ public class Vehiculo {
     private String modelo;
     private String kilometraje;
     private String tipo;
-    private String caracterisicas;
+    private String caracteristicas;
     private int disponibilidad;
     private Cliente cliente;
     private Vendedor vendedor;
-   
-    public static void setId() {
-        idVehiculo++;
+
+    public String getPlacaVehiculo() {
+        return placaVehiculo;
     }
 
-    public Vehiculo(String color, String year, String cilindraje, String marca, String modelo, String kilometraje, String tipo, String caracterisicas) {
-        this.color = color;
-        this.year = year;
-        this.cilindraje = cilindraje;
-        this.marca = marca;
-        this.modelo = modelo;
-        this.kilometraje = kilometraje;
-        this.tipo = tipo;
-        this.caracterisicas = caracterisicas;
-        this.cliente = null;
-        this.vendedor = null;
-        this.disponibilidad = Vehiculo.DISPONIBLE;
-    }
-
-    public Vehiculo() {
-        
-    }
-
-    
-    
-    public static int getIdVehiculo() {
-        return idVehiculo;
-    }
-
-    public static void setIdVehiculo(int idVehiculo) {
-        Vehiculo.idVehiculo = idVehiculo;
+    public void setPlacaVehiculo(String placaVehiculo) {
+        this.placaVehiculo = placaVehiculo;
     }
 
     public String getColor() {
@@ -109,12 +84,12 @@ public class Vehiculo {
         this.tipo = tipo;
     }
 
-    public String getCaracterisicas() {
-        return caracterisicas;
+    public String getCaracteristicas() {
+        return caracteristicas;
     }
 
-    public void setCaracterisicas(String caracterisicas) {
-        this.caracterisicas = caracterisicas;
+    public void setCaracteristicas(String caracteristicas) {
+        this.caracteristicas = caracteristicas;
     }
 
     public int getDisponibilidad() {
@@ -141,10 +116,24 @@ public class Vehiculo {
         this.vendedor = vendedor;
     }
 
+    public Vehiculo(String placaVehiculo, String color, String year, String cilindraje, String marca, String modelo, String kilometraje, String tipo, String caracteristicas, Cliente cliente, Vendedor vendedor) {
+        this.placaVehiculo = placaVehiculo;
+        this.color = color;
+        this.year = year;
+        this.cilindraje = cilindraje;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.kilometraje = kilometraje;
+        this.tipo = tipo;
+        this.caracteristicas = caracteristicas;
+        this.disponibilidad = Vehiculo.DISPONIBLE;
+        this.cliente = null;
+        this.vendedor = null;
+    }
+
     @Override
     public String toString() {
-        return "Vehiculo{" + "color=" + color + ", year=" + year + ", cilindraje=" + cilindraje + ", marca=" + marca + ", modelo=" + modelo + ", kilometraje=" + kilometraje + ", tipo=" + tipo + ", caracterisicas=" + caracterisicas + ", disponibilidad=" + disponibilidad + ", cliente=" + cliente + ", vendedor=" + vendedor + '}';
+        return "Vehiculo{" + "placaVehiculo=" + placaVehiculo + ", color=" + color + ", year=" + year + ", cilindraje=" + cilindraje + ", marca=" + marca + ", modelo=" + modelo + ", kilometraje=" + kilometraje + ", tipo=" + tipo + ", caracteristicas=" + caracteristicas + ", disponibilidad=" + disponibilidad + ", cliente=" + cliente + ", vendedor=" + vendedor + '}';
     }
-     
-    
+
 }
