@@ -6,7 +6,7 @@ public class Cliente {
     String apellido;
     int identificacion;
     String correoE;
-    String Telefono;
+    String telefono;
     int cantidadComprada = 0;
     int cantidadReservada = 0;
 
@@ -43,11 +43,11 @@ public class Cliente {
     }
 
     public String getTelefono() {
-        return Telefono;
+        return telefono;
     }
 
     public void setTelefono(String Telefono) {
-        this.Telefono = Telefono;
+        this.telefono = Telefono;
     }
 
     public int getCantidadComprada() {
@@ -67,19 +67,24 @@ public class Cliente {
     }
  
     
-    public Cliente(String nombre, String apellido, int identificacion, String correoE, String Telefono, int cantidadComprada, int cantidadReservada) {
+    public Cliente(String nombre, String apellido, int identificacion, String correoE, String Telefono) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.identificacion = identificacion;
         this.correoE = correoE;
-        this.Telefono = Telefono;
+        this.telefono = Telefono;
         this.cantidadComprada = 0;
         this.cantidadReservada = 0;       
     }
 
+    public Cliente() {
+    }
+    
+    
+
     @Override
     public String toString() {
-        return "Cliente{" + "nombre=" + nombre + ", apellido=" + apellido + ", identificacion=" + identificacion + ", correoE=" + correoE + ", Telefono=" + Telefono + ", cantidadComprada=" + cantidadComprada + ", cantidadReservada=" + cantidadReservada + '}';
+        return "Cliente{" + "nombre=" + nombre + ", apellido=" + apellido + ", identificacion=" + identificacion + ", correoE=" + correoE + ", Telefono=" + telefono + ", cantidadComprada=" + cantidadComprada + ", cantidadReservada=" + cantidadReservada + '}';
     }
     
     
