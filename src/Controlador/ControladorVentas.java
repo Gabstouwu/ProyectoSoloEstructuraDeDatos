@@ -2,42 +2,49 @@ package Controlador;
 
 import Modelo.Cliente;
 import Modelo.Vehiculo;
-import static Modelo.Vehiculo.DISPONIBLE;
-import static Modelo.Vehiculo.RESERVADO;
-import static Modelo.Vehiculo.VENDIDO;
 import Modelo.Vendedor;
 
 public class ControladorVentas {
 
-    public void reservarVehiculo(Vehiculo vehiculoAReservar, Cliente cliente, Vendedor vendedor) {
+    public static void reservarVehiculo(String placa, Cliente cliente, Vendedor vendedor) {
+
+        Vehiculo vehiculoAReservar = ControladorVehiculo.buscarVehiculoPorPlaca(placa);
+
         if (vehiculoAReservar.getDisponibilidad() == Vehiculo.DISPONIBLE) {
+
             vehiculoAReservar.setCliente(cliente);
             vehiculoAReservar.setVendedor(vendedor);
             vehiculoAReservar.setDisponibilidad(Vehiculo.RESERVADO);
-            System.out.println("Vehículo reservado con éxito.");
+            cliente.incrementarReservasCliente();
+            vendedor.incrementarReservasVendedor();
+
+            System.out.println("Vehiculo reservado con exito.");
         } else {
-            System.out.println("El vehículo no está disponible para reservar.");
+            System.out.println("El vehiculo no está disponible para reservar.");
         }
     }
-//        if (vehiculoAComprar.getDisponibilidad() == RESERVADO && clienteCompro.equals(clienteCompro)) {
 
-    public void venderVehiculo(Vehiculo vehiculoAComprar, Cliente clienteCompro, Vendedor vendedorCompra) {
+    public static void venderVehiculo(String placa, String cedulaCliente, String cedulaVendedor) {
 
-        Cliente confirmacionCliente = ControladorCliente.BuscarCliente(clienteCompro);
-
-        if (vehiculoAComprar.getDisponibilidad() == RESERVADO && clienteCompro == confirmacionCliente) {
+        Vehiculo vehiculoAComprar = ControladorVehiculo.buscarVehiculoPorPlaca(placa);
+        Cliente confirmacionCliente = ControladorCliente.buscarClientePorCedula(cedulaCliente);
+        Vendedor confirmacionVendedor = ControladorVendedor.buscarEmpleadoPorCedula(cedulaVendedor);
+        
+        if (vehiculoAComprar.getDisponibilidad() == Vehiculo.DISPONIBLE){ //&& confirmacionCliente == confirmacionCliente) {
             vehiculoAComprar.setDisponibilidad(Vehiculo.VENDIDO);
-            System.out.println("Vehículo vendido con éxito.");
+            System.out.println("Vehiculo vendido con exito.");  
+            confirmacionCliente.incrementarComprasCliente();
+            confirmacionVendedor.incrementarVentasVendedor();
         } else {
-            System.out.println("No se puede vender el vehículo. Verifica que esté reservado por el cliente indicado.");
+            System.out.println("No se puede vender el vehiculo. Verifica que este reservado por el cliente indicado.");
         }
     }
 
     public void cancelarReserva(Vehiculo vehiculoCancelar) {
-        if (vehiculoCancelar.getDisponibilidad() == RESERVADO) {
+        if (vehiculoCancelar.getDisponibilidad() == Vehiculo.RESERVADO) {
             vehiculoCancelar.setCliente(null);
             vehiculoCancelar.setVendedor(null);
-            vehiculoCancelar.setDisponibilidad(DISPONIBLE);
+            vehiculoCancelar.setDisponibilidad(Vehiculo.DISPONIBLE);
             System.out.println("Reserva cancelada con éxito. El vehículo ahora está disponible.");
         } else {
             System.out.println("No se puede cancelar la reserva. El vehículo no está reservado.");
@@ -45,7 +52,7 @@ public class ControladorVentas {
     }
 
     private void verificarModificacionDespuesDeVenta(Vehiculo vereficar) {
-        if (vereficar.getDisponibilidad() == VENDIDO) {
+        if (vereficar.getDisponibilidad() == Vehiculo.VENDIDO) {
             throw new UnsupportedOperationException("No se puede modificar un vehículo después de la venta.");
         }
     }

@@ -73,7 +73,6 @@ public class Lista<T> {
             actual = actual.getSiguiente();
             contador++;
         }
-        System.out.println(actual);
         return actual;
     }
 

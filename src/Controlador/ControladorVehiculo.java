@@ -9,7 +9,7 @@ public class ControladorVehiculo {
 
     public static void CrearVehiculo(Vehiculo nuevoVehiculo) {
         // Verificar si el vehiculo ya existe antes de agregarlo
-        if (BuscarVehiculo(nuevoVehiculo) == null) {
+        if (BuscarVehiculoInterno(nuevoVehiculo) == null) {
 
             // El vehiculo no existe, entonces lo agregamos
             Principal.listaVehiculo.agregar(nuevoVehiculo);
@@ -19,23 +19,23 @@ public class ControladorVehiculo {
         }
     }
 
-    private static String buscarVehiculoPorPlaca(String placa) {
-        Lista<Vehiculo> listaVehiculos = Principal.listaVehiculo; 
+    public static Vehiculo buscarVehiculoPorPlaca(String placa) {
+        Lista<Vehiculo> listaVehiculos = Principal.listaVehiculo;
 
         for (int i = 0; i < listaVehiculos.tamaño(); i++) {
             Nodo<Vehiculo> nodoVehiculo = listaVehiculos.obtenerNodoEnPosicion(i);
-            Vehiculo vehiculo = nodoVehiculo.getDato();
+            Vehiculo vehiculoEncontrado = nodoVehiculo.getDato();
 
-            if (vehiculo.getPlacaVehiculo().equals(placa)) {
-                
-                System.out.println(vehiculo.getPlacaVehiculo());
-                return vehiculo.getPlacaVehiculo(); // Se encontró el vehículo
+            if (vehiculoEncontrado.getPlacaVehiculo().equals(placa)) {
+
+                System.out.println(vehiculoEncontrado);
+                return vehiculoEncontrado; // Se encontró el vehículo
             }
         }
         return null; // No se encontró el vehículo
     }
 
-    public static Vehiculo BuscarVehiculo(Vehiculo vehiculoABuscar) {      
+    private static Vehiculo BuscarVehiculoInterno(Vehiculo vehiculoABuscar) {
         Nodo<Vehiculo> nodoEncontrado = Principal.listaVehiculo.buscarEnLista(vehiculoABuscar, Comparator.comparing(Vehiculo::getPlacaVehiculo));
 
         if (nodoEncontrado != null) {
@@ -46,25 +46,11 @@ public class ControladorVehiculo {
         }
         return null;
     }
-    
-    
-//    public static Vehiculo BuscarVehiculoCompleto(String placa) {
-//    String placaEncontrada = buscarVehiculoPorPlaca(placa);
-//
-//    if (placaEncontrada != null) {
-//        Nodo <Vehiculo> vehiculoABuscar = new Vehiculo(placaEncontrada);
-//        return BuscarVehiculo(d);
-//    } else {
-//        System.out.println("Vehiculo no encontrado.");
-//        return null;
-//    }
-//}
-
 
     public static void EditarVehiculo(Vehiculo vehiculoAEditar) {
 
         // Solicitar al usuario que ingrese nuevos valores para cada atributo
-        System.out.print("Nueva placa del vehículo: ");
+        System.out.print("Nueva placa del vehiculo: ");
         String nuevaPlaca = "MMM200";
         vehiculoAEditar.setPlacaVehiculo(nuevaPlaca);
 
@@ -72,7 +58,7 @@ public class ControladorVehiculo {
         String nuevoColor = "Cobre";
         vehiculoAEditar.setColor(nuevoColor);
 
-        System.out.print("Nuevo año: ");
+        System.out.print("Nuevo year: ");
         String nuevoAnio = "2015";
         vehiculoAEditar.setYear(nuevoAnio);
 
@@ -96,11 +82,11 @@ public class ControladorVehiculo {
         String nuevoTipo = "Rally";
         vehiculoAEditar.setTipo(nuevoTipo);
 
-        System.out.print("Nuevas características: ");
-        String nuevasCaracteristicas = "4 puertas, daño en la puerta";
+        System.out.print("Nuevas caracteristicas: ");
+        String nuevasCaracteristicas = "4 puertas, damage en la puerta";
         vehiculoAEditar.setCaracteristicas(nuevasCaracteristicas);
 
-        System.out.println("Vehículo editado correctamente.");
+        System.out.println("Vehiculo editado correctamente.");
     }
 
     public static void ListarVehiculos() {

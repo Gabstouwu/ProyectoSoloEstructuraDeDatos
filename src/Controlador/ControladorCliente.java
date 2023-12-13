@@ -43,7 +43,7 @@ public class ControladorCliente {
         clienteAEditar.setApellido(nuevoApellido);
 
         System.out.print("Nueva identificacion: ");
-        int nuevaIdentificacion = 123;
+        String nuevaIdentificacion = "123";
         clienteAEditar.setIdentificacion(nuevaIdentificacion);
 
         System.out.print("Nuevo correo electronico: ");
@@ -55,6 +55,25 @@ public class ControladorCliente {
         clienteAEditar.setTelefono(nuevoTelefono);
 
         System.out.println("Cliente editado correctamente.");
+    }
+    
+    
+    
+    
+        public static Cliente buscarClientePorCedula(String cedula) {
+        Lista<Cliente> listaClientes = Principal.listaCliente;
+
+        for (int i = 0; i < listaClientes.tamaño(); i++) {
+            Nodo<Cliente> nodoCliente = listaClientes.obtenerNodoEnPosicion(i);
+            Cliente clienteEncontrado = nodoCliente.getDato();
+
+            if (clienteEncontrado.getIdentificacion().equals(cedula)) {
+
+                System.out.println(clienteEncontrado);
+                return clienteEncontrado; // Se encontró el vehículo
+            }
+        }
+        return null; // No se encontró el vehículo
     }
     
     public static void ListarClientes(){

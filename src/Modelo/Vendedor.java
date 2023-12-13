@@ -4,12 +4,32 @@ public class Vendedor {
 
     String nombre;
     String apellido;
-    int identificacion;
+    String identificacion;
     String correoE;
     String telefono;
-    char[] password;
+    String password;
     int cantidadVendida = 0;
     int cantidadReservada = 0;
+
+    public void incrementarReservasVendedor() {
+        this.cantidadReservada++;
+    }
+
+    public void incrementarVentasVendedor() {
+        this.cantidadVendida++;
+    }
+
+    public void disminuirReservasVendedor() {
+        if (this.cantidadReservada > 0) {
+            this.cantidadReservada--;
+        }
+    }
+
+    public void disminuirVentasVendedor() {
+        if (this.cantidadVendida > 0) {
+            this.cantidadVendida--;
+        }
+    }
 
     public String getNombre() {
         return nombre;
@@ -27,11 +47,11 @@ public class Vendedor {
         this.apellido = apellido;
     }
 
-    public int getIdentificacion() {
+    public String getIdentificacion() {
         return identificacion;
     }
 
-    public void setIdentificacion(int identificacion) {
+    public void setIdentificacion(String identificacion) {
         this.identificacion = identificacion;
     }
 
@@ -51,11 +71,11 @@ public class Vendedor {
         this.telefono = telefono;
     }
 
-    public char[] getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(char[] password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -75,7 +95,7 @@ public class Vendedor {
         this.cantidadReservada = cantidadReservada;
     }
 
-    public Vendedor(String nombre, String apellido, int identificacion, String correoE, String telefono, char[] password) {
+    public Vendedor(String nombre, String apellido, String identificacion, String correoE, String telefono, String password) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.identificacion = identificacion;
@@ -89,6 +109,4 @@ public class Vendedor {
         return "Vendedor{" + "nombre=" + nombre + ", apellido=" + apellido + ", identificacion=" + identificacion + ", correoE=" + correoE + ", telefono=" + telefono + ", cantidadVendida=" + cantidadVendida + ", cantidadReservada=" + cantidadReservada + '}';
     }
 
-    
-    
 }
