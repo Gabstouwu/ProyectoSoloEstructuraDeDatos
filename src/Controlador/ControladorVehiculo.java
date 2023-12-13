@@ -47,9 +47,10 @@ public class ControladorVehiculo {
         return null;
     }
 
-    public static void EditarVehiculo(String placa) {
+    public static void EditarVehiculo(String placa, Vehiculo inputACambiar) {
 
         Vehiculo vehiculoAEditar = ControladorVehiculo.buscarVehiculoPorPlaca(placa);
+        
         if (vehiculoAEditar == null) {
             System.out.println("No se encontro un vehiculo con la placa proporcionada.");
 
@@ -59,39 +60,39 @@ public class ControladorVehiculo {
         } else {
             // Solicitar al usuario que ingrese nuevos valores para cada atributo
             System.out.print("Nueva placa del vehiculo: ");
-            String nuevaPlaca = "MMM200";
+            String nuevaPlaca = inputACambiar.getPlacaVehiculo();
             vehiculoAEditar.setPlacaVehiculo(nuevaPlaca);
 
             System.out.print("Nuevo color: ");
-            String nuevoColor = "Cobre";
+            String nuevoColor = inputACambiar.getColor();
             vehiculoAEditar.setColor(nuevoColor);
 
             System.out.print("Nuevo year: ");
-            String nuevoAnio = "2015";
+            String nuevoAnio = inputACambiar.getYear();
             vehiculoAEditar.setYear(nuevoAnio);
 
             System.out.print("Nuevo cilindraje: ");
-            String nuevoCilindraje = "850000";
+            String nuevoCilindraje = inputACambiar.getCilindraje();
             vehiculoAEditar.setCilindraje(nuevoCilindraje);
 
             System.out.print("Nueva marca: ");
-            String nuevaMarca = "Mazda";
+            String nuevaMarca = inputACambiar.getMarca();
             vehiculoAEditar.setMarca(nuevaMarca);
 
             System.out.print("Nuevo modelo: ");
-            String nuevoModelo = "C3";
+            String nuevoModelo = inputACambiar.getModelo();
             vehiculoAEditar.setModelo(nuevoModelo);
 
             System.out.print("Nuevo kilometraje: ");
-            String nuevoKilometraje = "10";
+            String nuevoKilometraje = inputACambiar.getKilometraje();
             vehiculoAEditar.setKilometraje(nuevoKilometraje);
 
             System.out.print("Nuevo tipo: ");
-            String nuevoTipo = "Rally";
+            String nuevoTipo = inputACambiar.getTipo();
             vehiculoAEditar.setTipo(nuevoTipo);
 
             System.out.print("Nuevas caracteristicas: ");
-            String nuevasCaracteristicas = "4 puertas, damage en la puerta";
+            String nuevasCaracteristicas = inputACambiar.getCaracteristicas();
             vehiculoAEditar.setCaracteristicas(nuevasCaracteristicas);
 
             System.out.println("Vehiculo editado correctamente.");

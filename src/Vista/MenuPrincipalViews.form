@@ -9,10 +9,13 @@
             <Property name="text" type="java.lang.String" value="Administracion"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="CrearEmpleadoBoton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Crear nuevo usuario"/>
+                <Property name="text" type="java.lang.String" value="Crear nuevo empleado"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CrearEmpleadoBotonActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

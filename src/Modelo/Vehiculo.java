@@ -116,7 +116,7 @@ public class Vehiculo {
         this.vendedor = vendedor;
     }
 
-    public Vehiculo(String placaVehiculo, String color, String year, String cilindraje, String marca, String modelo, String kilometraje, String tipo, String caracteristicas, Cliente cliente, Vendedor vendedor) {
+    public Vehiculo(String placaVehiculo, String color, String year, String cilindraje, String marca, String modelo, String kilometraje, String tipo, String caracteristicas) {
         this.placaVehiculo = placaVehiculo;
         this.color = color;
         this.year = year;

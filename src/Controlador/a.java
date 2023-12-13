@@ -12,14 +12,14 @@ import Modelo.Vehiculo;
  */
 public class a {
     
-    
-    public void metodo(){
-        Vehiculo carro = new Vehiculo("JSJ420", "Rojo", "2018", "2500", "Toyota", "Ranger", "150000", "Rally", "cuatro puertas", null, null);
-        carro.setDisponibilidad(Vehiculo.RESERVADO);
-    }
-    
-    
-    
+//    
+//    public void metodo(){
+//        Vehiculo carro = new Vehiculo("JSJ420", "Rojo", "2018", "2500", "Toyota", "Ranger", "150000", "Rally", "cuatro puertas", null, null);
+//        carro.setDisponibilidad(Vehiculo.RESERVADO);
+//    }
+//    
+//    
+//    
     
     
 }
