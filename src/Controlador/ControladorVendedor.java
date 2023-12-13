@@ -78,7 +78,7 @@ public class ControladorVendedor {
         return null; // No se encontró el vehículo
     }
 
-    public static void ListarClientes() {
+    public static void ListarEmpleados() {
 
         Principal.listaEmpleados.imprimirLista();
 

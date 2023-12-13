@@ -2,6 +2,7 @@ package proyectosoloestructuradatos;
 
 import Controlador.ControladorCliente;
 import Controlador.ControladorVehiculo;
+import Controlador.ControladorVendedor;
 import Controlador.ControladorVentas;
 import Controlador.Lista;
 import Modelo.Cliente;
@@ -26,6 +27,10 @@ public class Principal {
 
         //Se crean las listas
         //---------------------------------------Clientes---------------------------------------
+        ControladorVendedor.CrearEmpleado(empleado1);
+        ControladorVendedor.buscarEmpleadoPorCedula("789456123");
+        ControladorVendedor.ListarEmpleados();
+
         //Se utilizan los metodo
         System.out.println("-------Creacion clientes----------");
         ControladorCliente.CrearCliente(persona);
@@ -58,7 +63,7 @@ public class Principal {
 //        ControladorVehiculo.buscarVehiculoPorPlaca("123456");
 
         System.out.println("-------Edicion----------");
-        ControladorVehiculo.EditarVehiculo(vehiculo2);
+        ControladorVehiculo.EditarVehiculo("123456");
 
         System.out.println("-------Empresion Lista Actualizada con el metodo del controlador clientes----------");
         ControladorVehiculo.ListarVehiculos();
@@ -66,16 +71,26 @@ public class Principal {
         System.out.println("-------Debug----------");
         ControladorVehiculo.buscarVehiculoPorPlaca("MMM200");
 
-//        System.out.println("-------Reserva----------");
-//        ControladorVentas.reservarVehiculo("MMM200", persona, empleado1);
-//        System.out.println("------------------------------------");
+        System.out.println("-------Reserva----------");
+        ControladorVentas.reservarVehiculo("MMM200", "1179000078", "789456123");
 
+        System.out.println("-----------------Lista Vehiculos-------------------");
         ControladorVehiculo.ListarVehiculos();
+
         System.out.println("-------Venta----------");
         ControladorVentas.venderVehiculo("555", "1179000078", "789456123");
-        System.out.println("------------------------------------");
 
-        ControladorCliente.ListarClientes();
+        System.out.println("-------------------CancelarVenta-----------------");
+        ControladorVentas.cancelarVenta("555");
+
+        System.out.println("-------------------Comprobar Edicion con if-----------------");
+        ControladorVehiculo.EditarVehiculo("123456");
+
+        System.out.println("-------------------CancelarReserva-----------------");
+        ControladorVentas.cancelarReserva("555");
+
+        System.out.println("-------Empresion Lista empleados----------");
+        ControladorVendedor.ListarEmpleados();
 
     }
 

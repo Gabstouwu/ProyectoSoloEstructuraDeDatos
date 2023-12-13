@@ -6,17 +6,18 @@ import Modelo.Vendedor;
 
 public class ControladorVentas {
 
-    public static void reservarVehiculo(String placa, Cliente cliente, Vendedor vendedor) {
+    public static void reservarVehiculo(String placa, String cedulaCliente, String cedulaVendedor) {
 
         Vehiculo vehiculoAReservar = ControladorVehiculo.buscarVehiculoPorPlaca(placa);
-
+        Cliente confirmacionCliente = ControladorCliente.buscarClientePorCedula(cedulaCliente);
+        Vendedor confirmacionVendedor = ControladorVendedor.buscarEmpleadoPorCedula(cedulaVendedor);
         if (vehiculoAReservar.getDisponibilidad() == Vehiculo.DISPONIBLE) {
 
-            vehiculoAReservar.setCliente(cliente);
-            vehiculoAReservar.setVendedor(vendedor);
+            vehiculoAReservar.setCliente(confirmacionCliente);
+            vehiculoAReservar.setVendedor(confirmacionVendedor);
             vehiculoAReservar.setDisponibilidad(Vehiculo.RESERVADO);
-            cliente.incrementarReservasCliente();
-            vendedor.incrementarReservasVendedor();
+            confirmacionCliente.incrementarReservasCliente();
+            confirmacionVendedor.incrementarReservasVendedor();
 
             System.out.println("Vehiculo reservado con exito.");
         } else {
@@ -29,10 +30,13 @@ public class ControladorVentas {
         Vehiculo vehiculoAComprar = ControladorVehiculo.buscarVehiculoPorPlaca(placa);
         Cliente confirmacionCliente = ControladorCliente.buscarClientePorCedula(cedulaCliente);
         Vendedor confirmacionVendedor = ControladorVendedor.buscarEmpleadoPorCedula(cedulaVendedor);
-        
-        if (vehiculoAComprar.getDisponibilidad() == Vehiculo.DISPONIBLE){ //&& confirmacionCliente == confirmacionCliente) {
+
+        if (vehiculoAComprar.getDisponibilidad() == Vehiculo.DISPONIBLE) { //&& confirmacionCliente == confirmacionCliente) {
             vehiculoAComprar.setDisponibilidad(Vehiculo.VENDIDO);
-            System.out.println("Vehiculo vendido con exito.");  
+            vehiculoAComprar.setVendedor(confirmacionVendedor);
+            vehiculoAComprar.setCliente(confirmacionCliente);
+
+            System.out.println("Vehiculo vendido con exito.");
             confirmacionCliente.incrementarComprasCliente();
             confirmacionVendedor.incrementarVentasVendedor();
         } else {
@@ -40,14 +44,31 @@ public class ControladorVentas {
         }
     }
 
-    public void cancelarReserva(Vehiculo vehiculoCancelar) {
-        if (vehiculoCancelar.getDisponibilidad() == Vehiculo.RESERVADO) {
-            vehiculoCancelar.setCliente(null);
-            vehiculoCancelar.setVendedor(null);
-            vehiculoCancelar.setDisponibilidad(Vehiculo.DISPONIBLE);
-            System.out.println("Reserva cancelada con éxito. El vehículo ahora está disponible.");
+    public static void cancelarReserva(String placa) {
+
+        Vehiculo vehiculoACancelar = ControladorVehiculo.buscarVehiculoPorPlaca(placa);
+
+        if (vehiculoACancelar.getDisponibilidad() == Vehiculo.RESERVADO) {
+            vehiculoACancelar.setCliente(null);
+            vehiculoACancelar.setVendedor(null);
+            vehiculoACancelar.setDisponibilidad(Vehiculo.DISPONIBLE);
+            System.out.println("Reserva cancelada con exito. El vehiculo ahora está disponible.");
         } else {
-            System.out.println("No se puede cancelar la reserva. El vehículo no está reservado.");
+            System.out.println("No se puede cancelar la reserva. El vehiculo no esta reservado.");
+        }
+    }
+
+    public static void cancelarVenta(String placa) {
+
+        Vehiculo vehiculoACancelar = ControladorVehiculo.buscarVehiculoPorPlaca(placa);
+
+        if (vehiculoACancelar.getDisponibilidad() == Vehiculo.RESERVADO || vehiculoACancelar.getDisponibilidad() == Vehiculo.VENDIDO) {
+            vehiculoACancelar.setCliente(null);
+            vehiculoACancelar.setVendedor(null);
+            vehiculoACancelar.setDisponibilidad(Vehiculo.DISPONIBLE);
+            System.out.println("Venta cancelada con éxito. El vehículo ahora esta disponible.");
+        } else {
+            System.out.println("No se puede cancelar la reserva. El vehiculo no esta reservado.");
         }
     }
 
