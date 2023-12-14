@@ -3,6 +3,11 @@ package Controlador;
 import Modelo.Cliente;
 import Modelo.Nodo;
 import Modelo.Vendedor;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Comparator;
 import proyectosoloestructuradatos.Principal;
 
@@ -13,6 +18,8 @@ public class ControladorVendedor {
         if (BuscarEmpleado(nuevoEmpleado) == null) {
             // El cliente no existe, entonces lo agregamos
             Principal.listaEmpleados.agregar(nuevoEmpleado);
+            // Se guarda la lista de empleados en el archivo
+            ControladorVendedor.guardarVendedores();
             System.out.println("Se agrego exitosamente.");
         } else {
             System.out.println("El empleado ya existe, no se puede agregar.");
@@ -62,12 +69,13 @@ public class ControladorVendedor {
         System.out.println("Cliente editado correctamente.");
     }
 
-    public static Vendedor buscarEmpleadoPorCedula(String cedula) {
-        Lista<Vendedor> listaEmpleados = Principal.listaEmpleados;
-
-        for (int i = 0; i < listaEmpleados.tamaño(); i++) {
-            Nodo<Vendedor> nodoEmpleado = listaEmpleados.obtenerNodoEnPosicion(i);
-            Vendedor empleadoEncontrado = nodoEmpleado.getDato();
+    public static Vendedor buscarEmpleadoPorCedula(String cedula) {       
+        Vendedor empleadoEncontrado;
+        Nodo<Vendedor> nodoEmpleado;
+        
+        for (int i = 0; i < Principal.listaEmpleados.tamaño(); i++) {
+            nodoEmpleado = Principal.listaEmpleados.obtenerNodoEnPosicion(i);
+            empleadoEncontrado = nodoEmpleado.getDato();
 
             if (empleadoEncontrado.getIdentificacion().equals(cedula)) {
 
@@ -83,5 +91,36 @@ public class ControladorVendedor {
         Principal.listaEmpleados.imprimirLista();
 
     }
-
+    
+    // Esto sobrescribirá todo el archivo
+    public static void guardarVendedores() {
+        Vendedor empleadoEncontrado;
+        Nodo<Vendedor> nodoEmpleado;
+        
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("archivo.txt"))) {
+            for (int i = 0; i < Principal.listaEmpleados.tamaño(); i++) {
+                nodoEmpleado = Principal.listaEmpleados.obtenerNodoEnPosicion(i);
+                empleadoEncontrado = nodoEmpleado.getDato();
+                writer.write(empleadoEncontrado.toCsvString());
+                writer.newLine();
+            } 
+        }catch (IOException e) {
+            e.printStackTrace();
+        }       
+    }
+    
+    // Esto sobrescribirá la Lista en memoria con el contenido del archivo
+    public static void readVendedoresFromTextFile() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("archivo.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (ControladorVendedor.buscarEmpleadoPorCedula(Vendedor.fromCsvString(line).getIdentificacion()) == null){
+                    Principal.listaEmpleados.agregar(Vendedor.fromCsvString(line));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
 }
