@@ -49,6 +49,33 @@ public class ControladorReportes {
         }
         return cantidadDisponibles;
     }
+    
+    public static String obtenerReporteAutos() {
+        int cantidadDisponibles = 0;
+        int cantidadReservados = 0;
+        int cantidadVendidos = 0;
+
+        
+        Nodo<Vehiculo> actual = Principal.listaVehiculo.getCabeza();
+
+        while (actual != null) {
+            Vehiculo vehiculo = actual.getDato();
+            switch (vehiculo.getDisponibilidad()) {
+                case Vehiculo.DISPONIBLE:
+                    cantidadDisponibles++;
+                    break;
+                case Vehiculo.RESERVADO:
+                    cantidadReservados++;
+                    break;
+                default:
+                    //Vehiculo.VENDIDO
+                    cantidadVendidos++;
+                    break;
+            }
+            actual = actual.getSiguiente();
+        }
+        return "Vehiculos Disponibles" + cantidadDisponibles + "\nVehiculos Reservados" + cantidadReservados + "\nVehiculos Vendidos" + cantidadVendidos + "\n";
+    }
 
     public static int obtenerCantidadClientesRegistrados() {
         return Principal.listaCliente.tamaño();
@@ -81,6 +108,8 @@ public class ControladorReportes {
         }
         return cantidadReservada;
     }
+    
+    
 
 //    public static Lista<Cliente> obtenerTop3ClientesQueMasCompraron() {
 //        Nodo<Cliente> topClientes = Principal.listaCliente.getCabeza();

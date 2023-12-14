@@ -1,10 +1,12 @@
 package Vista;
 
+import Controlador.ControladorReportes;
 import Controlador.ControladorVehiculo;
 import Controlador.ControladorVendedor;
 import Controlador.ControladorView;
 import Modelo.Vehiculo;
 import Modelo.Vendedor;
+import javax.swing.JOptionPane;
 
 public class MenuPrincipalViews extends javax.swing.JFrame {
 
@@ -117,6 +119,11 @@ public class MenuPrincipalViews extends javax.swing.JFrame {
         jMenu6.setText("Reportes");
 
         jMenuItem11.setText("Reporte completo de carros");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem11);
 
         jMenuItem12.setText("Reporte completo de clientes");
@@ -169,6 +176,10 @@ public class MenuPrincipalViews extends javax.swing.JFrame {
     private void CrearEmpleadoBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearEmpleadoBotonActionPerformed
         Vendedor EEmpleado = ControladorView.crearEmpleadoView();
         ControladorVendedor.CrearEmpleado(EEmpleado);    }//GEN-LAST:event_CrearEmpleadoBotonActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        JOptionPane.showMessageDialog(null, ControladorReportes.obtenerReporteAutos());
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     /**
      * @param args the command line arguments
