@@ -3,14 +3,20 @@ package Controlador;
 import Modelo.Cliente;
 import Modelo.Vehiculo;
 import Modelo.Vendedor;
+import Vista.DatosReserva;
 
 public class ControladorVentas {
 
-    public static void reservarVehiculo(String placa, String cedulaCliente, String cedulaVendedor) {
+    public static void reservarVehiculo(DatosReserva datosReserva) {
+
+        String placa = datosReserva.getPlaca();
+        String cedulaCliente = datosReserva.getCliente();
+        String cedulaVendedor = datosReserva.getEmpleado();
 
         Vehiculo vehiculoAReservar = ControladorVehiculo.buscarVehiculoPorPlaca(placa);
         Cliente confirmacionCliente = ControladorCliente.buscarClientePorCedula(cedulaCliente);
         Vendedor confirmacionVendedor = ControladorVendedor.buscarEmpleadoPorCedula(cedulaVendedor);
+
         if (vehiculoAReservar.getDisponibilidad() == Vehiculo.DISPONIBLE) {
 
             vehiculoAReservar.setCliente(confirmacionCliente);
@@ -25,7 +31,11 @@ public class ControladorVentas {
         }
     }
 
-    public static void venderVehiculo(String placa, String cedulaCliente, String cedulaVendedor) {
+    public static void venderVehiculo(DatosReserva datosReserva) {
+
+        String placa = datosReserva.getPlaca();
+        String cedulaCliente = datosReserva.getCliente();
+        String cedulaVendedor = datosReserva.getEmpleado();
 
         Vehiculo vehiculoAComprar = ControladorVehiculo.buscarVehiculoPorPlaca(placa);
         Cliente confirmacionCliente = ControladorCliente.buscarClientePorCedula(cedulaCliente);

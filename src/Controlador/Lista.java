@@ -81,7 +81,7 @@ public class Lista<T> {
         String result = "";
         Nodo<T> actual = cabeza;
         while (actual != null) {
-            result += actual + " ";
+            result += actual + " \n";
             actual = actual.getSiguiente();
         }
         return result;

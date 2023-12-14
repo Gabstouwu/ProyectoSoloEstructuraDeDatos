@@ -1,13 +1,11 @@
 package Vista;
 
-import Controlador.ControladorVehiculo;
-
-public class BuscarVehiculoView extends javax.swing.JPanel {
+public class BuscarClienteView extends javax.swing.JPanel {
 
     /**
      * Creates new form Eliminar
      */
-    public BuscarVehiculoView() {
+    public BuscarClienteView() {
         initComponents();
     }
 
@@ -34,7 +32,7 @@ public class BuscarVehiculoView extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Sitka Heading", 2, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("Dijite la placa del vehiculo");
+        jLabel2.setText("Dijite la identificacion del cliente");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -42,15 +40,15 @@ public class BuscarVehiculoView extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(InputPlaca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(InputPlaca)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,9 +68,9 @@ public class BuscarVehiculoView extends javax.swing.JPanel {
     }//GEN-LAST:event_InputPlacaActionPerformed
     
     
-    public String crearObjetoBuscarVehiculo() {
-        String placa = this.InputPlaca.getText();
-        return placa;
+    public String crearObjetoBuscarCliente() {
+        String id = this.InputPlaca.getText();
+        return id;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
