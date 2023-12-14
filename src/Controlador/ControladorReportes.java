@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.Cliente;
 import Modelo.Nodo;
 import Modelo.Vehiculo;
+import Modelo.Vendedor;
 import java.util.Comparator;
 import proyectosoloestructuradatos.Principal;
 
@@ -117,6 +118,35 @@ public class ControladorReportes {
         return reporte;
     }
     
+    public static String reporteVentasVendedor(){
+        String reporte = "";
+        
+        Vendedor empleadoEncontrado;
+        Nodo<Vendedor> nodoEmpleado;
+        
+        for (int i = 0; i < Principal.listaEmpleados.tamaño(); i++) {
+            nodoEmpleado = Principal.listaEmpleados.obtenerNodoEnPosicion(i);
+            empleadoEncontrado = nodoEmpleado.getDato();
+            reporte += empleadoEncontrado.getNombre() + " " + empleadoEncontrado.getApellido() + ": " + empleadoEncontrado.getCantidadVendida() + " vendidos\n";
+            
+        }
+        return reporte;
+    }
+    
+    public static String reporteReservasVendedor(){
+        String reporte = "";
+        
+        Vendedor empleadoEncontrado;
+        Nodo<Vendedor> nodoEmpleado;
+        
+        for (int i = 0; i < Principal.listaEmpleados.tamaño(); i++) {
+            nodoEmpleado = Principal.listaEmpleados.obtenerNodoEnPosicion(i);
+            empleadoEncontrado = nodoEmpleado.getDato();
+            reporte += empleadoEncontrado.getNombre() + " " + empleadoEncontrado.getApellido() + ": " + empleadoEncontrado.getCantidadReservada()+ " reservados\n";
+            
+        }
+        return reporte;
+    }
 
 //    public static Lista<Cliente> obtenerTop3ClientesQueMasCompraron() {
 //        Nodo<Cliente> topClientes = Principal.listaCliente.getCabeza();

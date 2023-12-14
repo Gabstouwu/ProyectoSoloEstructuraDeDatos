@@ -179,6 +179,11 @@ public class MenuPrincipalViews extends javax.swing.JFrame {
         jMenu6.add(jMenuItem14);
 
         jMenuItem15.setText("Reporte de reservas por vendedor");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem15);
 
         jMenuBar1.add(jMenu6);
@@ -247,7 +252,7 @@ public class MenuPrincipalViews extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, a);    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, ControladorReportes.reporteVentasVendedor());
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void CrearEmpleadoBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearEmpleadoBotonActionPerformed
@@ -307,6 +312,10 @@ public class MenuPrincipalViews extends javax.swing.JFrame {
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         JOptionPane.showMessageDialog(null, ControladorReportes.reporteClientes());
     }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+        JOptionPane.showMessageDialog(null, ControladorReportes.reporteReservasVendedor());
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     /**
      * @param args the command line arguments
