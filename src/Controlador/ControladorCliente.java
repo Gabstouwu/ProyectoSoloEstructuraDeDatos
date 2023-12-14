@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.Cliente;
 import Modelo.Nodo;
 import java.util.Comparator;
+import javax.swing.JOptionPane;
 import proyectosoloestructuradatos.Principal;
 
 public class ControladorCliente {
@@ -56,11 +57,8 @@ public class ControladorCliente {
 
         System.out.println("Cliente editado correctamente.");
     }
-    
-    
-    
-    
-        public static Cliente buscarClientePorCedula(String cedula) {
+
+    public static Cliente buscarClientePorCedula(String cedula) {
         Lista<Cliente> listaClientes = Principal.listaCliente;
 
         for (int i = 0; i < listaClientes.tamaño(); i++) {
@@ -75,11 +73,14 @@ public class ControladorCliente {
         }
         return null; // No se encontró el vehículo
     }
-    
-    public static void ListarClientes(){
-    
-        Principal.listaCliente.imprimirLista();
-  
+
+//    public static void ListarClientes(){
+//    
+//        JOptionPane.showMessageDialog(null,Principal.listaCliente.imprimirLista());
+//  
+//    }
+    public static void ListarClientes() {
+        JOptionPane.showMessageDialog(null, Principal.listaCliente.toString());
     }
-    
+
 }

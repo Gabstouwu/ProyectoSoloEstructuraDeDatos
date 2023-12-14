@@ -105,7 +105,7 @@ public class ControladorVendedor {
                 writer.newLine();
             } 
         }catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error al crear el archivo archivo.txt");
         }       
     }
     
@@ -119,7 +119,7 @@ public class ControladorVendedor {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("El archivo archivo.txt no existe");
         }
     }
     

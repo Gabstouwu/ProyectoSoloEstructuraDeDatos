@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.Nodo;
 import Modelo.Vehiculo;
 import java.util.Comparator;
+import javax.swing.JOptionPane;
 import proyectosoloestructuradatos.Principal;
 
 public class ControladorVehiculo {
@@ -50,7 +51,7 @@ public class ControladorVehiculo {
     public static void EditarVehiculo(String placa, Vehiculo inputACambiar) {
 
         Vehiculo vehiculoAEditar = ControladorVehiculo.buscarVehiculoPorPlaca(placa);
-        
+
         if (vehiculoAEditar == null) {
             System.out.println("No se encontro un vehiculo con la placa proporcionada.");
 
@@ -99,9 +100,12 @@ public class ControladorVehiculo {
         }
     }
 
+//    public static void ListarVehiculos() {
+//
+//        Principal.listaVehiculo.imprimirLista();
+//
+//    }
     public static void ListarVehiculos() {
-
-        Principal.listaVehiculo.imprimirLista();
-
+        JOptionPane.showMessageDialog(null, Principal.listaVehiculo.toString());
     }
 }

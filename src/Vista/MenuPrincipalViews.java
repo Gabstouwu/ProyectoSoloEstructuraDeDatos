@@ -1,9 +1,12 @@
 package Vista;
 
 import Controlador.ControladorReportes;
+import Controlador.ControladorCliente;
 import Controlador.ControladorVehiculo;
 import Controlador.ControladorVendedor;
+import Controlador.ControladorVentas;
 import Controlador.ControladorView;
+import Modelo.Cliente;
 import Modelo.Vehiculo;
 import Modelo.Vendedor;
 import javax.swing.JOptionPane;
@@ -48,6 +51,11 @@ public class MenuPrincipalViews extends javax.swing.JFrame {
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
+        VentaBotom = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
+        jMenuItem17 = new javax.swing.JMenuItem();
+        jMenuItem18 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,10 +81,20 @@ public class MenuPrincipalViews extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem2);
 
-        jMenuItem3.setText("Actulizar informacion del vehiculo");
+        jMenuItem3.setText("Actualizar informacion del vehiculo");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
         jMenuItem4.setText("Buscar informacion del vehiculo");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
@@ -84,6 +102,11 @@ public class MenuPrincipalViews extends javax.swing.JFrame {
         jMenu3.setText("Gestion clientes");
 
         jMenuItem5.setText("Registrar nuevo cliente");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem5);
 
         jMenuItem6.setText("Editar informacion de cliente");
@@ -102,9 +125,19 @@ public class MenuPrincipalViews extends javax.swing.JFrame {
         jMenu4.setText("Listar informacion");
 
         jMenuItem8.setText("Listar vehiculos registrados");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem8);
 
         jMenuItem9.setText("Listar clientes registrados");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem9);
 
         jMenuBar1.add(jMenu4);
@@ -145,17 +178,53 @@ public class MenuPrincipalViews extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu6);
 
+        VentaBotom.setText("Ventas y Reservas");
+
+        jMenuItem1.setText("Crear reserva");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        VentaBotom.add(jMenuItem1);
+
+        jMenuItem16.setText("Cancelar Reserva");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16ActionPerformed(evt);
+            }
+        });
+        VentaBotom.add(jMenuItem16);
+
+        jMenuItem17.setText("Crear venta");
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
+        VentaBotom.add(jMenuItem17);
+
+        jMenuItem18.setText("Cancelar Venta");
+        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem18ActionPerformed(evt);
+            }
+        });
+        VentaBotom.add(jMenuItem18);
+
+        jMenuBar1.add(VentaBotom);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 572, Short.MAX_VALUE)
+            .addGap(0, 574, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGap(0, 278, Short.MAX_VALUE)
         );
 
         pack();
@@ -163,11 +232,14 @@ public class MenuPrincipalViews extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         Vehiculo EVehiculo = ControladorView.crearVehiculo();
-        ControladorVehiculo.CrearVehiculo(EVehiculo);    }//GEN-LAST:event_jMenuItem2ActionPerformed
+        ControladorVehiculo.CrearVehiculo(EVehiculo);   
+        JOptionPane.showMessageDialog(null, "Se registro el vehiculo");
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+        String encontrado = ControladorView.buscarClienteView();
+        Cliente a = ControladorCliente.buscarClientePorCedula(encontrado);
+        JOptionPane.showMessageDialog(null, a);    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         // TODO add your handling code here:
@@ -175,7 +247,53 @@ public class MenuPrincipalViews extends javax.swing.JFrame {
 
     private void CrearEmpleadoBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearEmpleadoBotonActionPerformed
         Vendedor EEmpleado = ControladorView.crearEmpleadoView();
-        ControladorVendedor.CrearEmpleado(EEmpleado);    }//GEN-LAST:event_CrearEmpleadoBotonActionPerformed
+        ControladorVendedor.CrearEmpleado(EEmpleado);    
+        JOptionPane.showMessageDialog(null, "Se registro al empleado");
+    }//GEN-LAST:event_CrearEmpleadoBotonActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        String encontrado = ControladorView.buscarVehiculoView();
+        Vehiculo a = ControladorVehiculo.buscarVehiculoPorPlaca(encontrado);
+        JOptionPane.showMessageDialog(null, a);
+     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        Cliente eCliente = ControladorView.crearClienteView();
+        ControladorCliente.CrearCliente(eCliente);
+        JOptionPane.showMessageDialog(null, "Se registro al cliente");
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        ControladorVehiculo.ListarVehiculos();    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        ControladorCliente.ListarClientes();    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+        String encontrado = ControladorView.buscarVehiculoView();
+        ControladorVentas.cancelarReserva(encontrado);
+        JOptionPane.showMessageDialog(null, "Se cancelo la reserva");     }//GEN-LAST:event_jMenuItem16ActionPerformed
+
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+        DatosReserva eReserva = ControladorView.crearVentaView();
+        ControladorVentas.venderVehiculo(eReserva);     
+        JOptionPane.showMessageDialog(null, "Se crea la venta");
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        DatosReserva eReserva = ControladorView.crearReservaView();
+        ControladorVentas.reservarVehiculo(eReserva);   
+    
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+        String encontrado = ControladorView.buscarVehiculoView();
+        ControladorVentas.cancelarVenta(encontrado);
+        JOptionPane.showMessageDialog(null, "Se cancelo la venta");    }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         JOptionPane.showMessageDialog(null, ControladorReportes.obtenerReporteAutos());
@@ -218,6 +336,7 @@ public class MenuPrincipalViews extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem CrearEmpleadoBoton;
+    private javax.swing.JMenu VentaBotom;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -225,12 +344,16 @@ public class MenuPrincipalViews extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
