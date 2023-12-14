@@ -109,6 +109,13 @@ public class ControladorReportes {
         return cantidadReservada;
     }
     
+    public static String reporteClientes(){
+        String reporte = "Cantidad de clientes " + Principal.listaCliente.tamaño() +
+                "\nCantidad de clientes que compraron " + obtenerCantidadClientesQueCompraron() +
+                "\nCantidad de clientes que reservaron " + obtenerCantidadClientesQueReservaron();
+        
+        return reporte;
+    }
     
 
 //    public static Lista<Cliente> obtenerTop3ClientesQueMasCompraron() {

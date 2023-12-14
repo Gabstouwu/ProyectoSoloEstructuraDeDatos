@@ -160,6 +160,11 @@ public class MenuPrincipalViews extends javax.swing.JFrame {
         jMenu6.add(jMenuItem11);
 
         jMenuItem12.setText("Reporte completo de clientes");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem12);
 
         jMenuItem13.setText("Top 3 clientes");
@@ -298,6 +303,10 @@ public class MenuPrincipalViews extends javax.swing.JFrame {
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         JOptionPane.showMessageDialog(null, ControladorReportes.obtenerReporteAutos());
     }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        JOptionPane.showMessageDialog(null, ControladorReportes.reporteClientes());
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     /**
      * @param args the command line arguments
